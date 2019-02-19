@@ -12,11 +12,11 @@ rm "$HOME/.zshrc"
 # Install Oh My Zsh
 git clone "https://github.com/robbyrussell/oh-my-zsh.git" "$HOME/.oh-my-zsh"
 
-# Symlink .zshrc 
+# Symlink .zshrc
 ln -s "$PWD/.zshrc" "$HOME"
 
 # Change default shell to zsh
-chsh -s /bin/zsh 
+chsh -s /bin/zsh
 
 
 
@@ -25,16 +25,17 @@ chsh -s /bin/zsh
 
 NEOVIM_CONFIG_PATH="$HOME/.config/nvim/"
 
-# Symlink init.vim 
+# Symlink init.vim
 mkdir -p "$NEOVIM_CONFIG_PATH"
-ln -s "$PWD/init.vim" "$NEOVIM_CONFIG_PATH" 
+mv "$NEOVIM_CONFIG_PATH/init.vim" "$NEOVIM_CONFIG_PATH/init.vim.orig"
+ln -s "$PWD/init.vim" "$NEOVIM_CONFIG_PATH"
 
-# Install vim-plug for neovim 
+# Install vim-plug for neovim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install neovim plugins via vim-plug
-nvim +PlugInstall +qall
+nvim +PlugClean +PlugInstall +qall
 
 
 
