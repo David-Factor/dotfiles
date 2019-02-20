@@ -10,6 +10,7 @@ call plug#end()
 " General
 syntax on
 filetype plugin indent on
+set mouse=a
 
 
 " Color scheme (terminal)
