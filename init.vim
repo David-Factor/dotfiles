@@ -17,12 +17,13 @@ set mouse=a
 set termguicolors   " enable true color support in neovim
 set background=dark
 colorscheme gruvbox
-
+let g:gruvbox_contrast_dark="soft"
 
 " UI
 set cmdheight=3     " command line height
 set ruler           " show the cursor position all the time
 set number          " show line numbers
+set colorcolumn=80  " add vertical line at 80 characters
 
 
 " Visual Cues
@@ -58,5 +59,14 @@ let g:elm_format_fail_silently=1
 
 " Mappings
 let mapleader="-"
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-:nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Ale customisations
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-d> <Plug>(ale_detail)
+
+
+" Netrw
+let g:netrw_liststyle=3   " customise file explorer
