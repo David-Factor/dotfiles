@@ -20,10 +20,17 @@ colorscheme gruvbox
 let g:gruvbox_contrast_dark="soft"
 
 " UI
-set cmdheight=3     " command line height
+set cmdheight=1     " command line height
 set ruler           " show the cursor position all the time
-set number          " show line numbers
 set colorcolumn=80  " add vertical line at 80 characters
+set statusline=%f                     " Path to the file
+set statusline+=%=                    " Switch to the right side
+set statusline+=\ ▏                   " Separator
+set statusline+=%l                    " Current line
+set statusline+=/                     " Separator
+set statusline+=%L                    " Total lines
+set statusline+=\ ▏                   " Separator
+set statusline+=%{strftime('%H:%M')}  " Show time
 
 
 " Visual Cues
@@ -44,6 +51,7 @@ augroup configGroup
     autocmd!
     autocmd BufRead,BufNewFile *.md,*.markdown setlocal wrap
     autocmd BufRead,BufNewFile *.ts setlocal filetype=typescript noexpandtab shiftwidth=2 tabstop=2
+    autocmd BufRead,BufNewFile *.css setlocal shiftwidth=2  tabstop=2 softtabstop=2
 augroup END
 
 augroup fileCleaning
