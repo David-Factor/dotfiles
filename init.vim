@@ -4,6 +4,7 @@ call plug#begin()
   Plug 'w0rp/ale'
   Plug 'Zaptic/elm-vim'
   Plug 'leafgarland/typescript-vim'
+  Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 
@@ -31,6 +32,7 @@ set statusline+=/                     " Separator
 set statusline+=%L                    " Total lines
 set statusline+=\ ▏                   " Separator
 set statusline+=%{strftime('%H:%M')}  " Show time
+set statusline+=▕                   " Separator
 
 
 " Visual Cues
@@ -78,3 +80,6 @@ nmap <silent> <C-d> <Plug>(ale_detail)
 
 " Netrw
 let g:netrw_liststyle=3   " customise file explorer
+
+" Wildmenu
+set wildchar=<Tab> wildmenu wildmode=full
