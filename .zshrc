@@ -1,6 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Haskell
+export PATH=$HOME/.haskell:$PATH
+export PATH=$HOME/ghc/8.4.3/bin:$PATH
+export PATH=$HOME/ghc/8.6.5/bin:$PATH
+export PATH=$HOME/.cabal/bin:$PATH
+
+# Go
+export PATH=$GOPATH/bin:$PATH
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -75,11 +85,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -96,4 +106,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim=nvim
-alias vi=nvim
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# hook direnv package into shell
+eval "$(direnv hook zsh)"
+
