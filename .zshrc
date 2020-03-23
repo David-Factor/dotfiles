@@ -2,10 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Haskell
-export PATH=$HOME/.haskell:$PATH
-export PATH=$HOME/ghc/8.4.3/bin:$PATH
-export PATH=$HOME/ghc/8.6.5/bin:$PATH
-export PATH=$HOME/.cabal/bin:$PATH
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 # Go
 export PATH=$GOPATH/bin:$PATH
@@ -112,6 +109,9 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-# hook direnv package into shell
-eval "$(direnv hook zsh)"
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/davidfactor/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/davidfactor/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/davidfactor/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/davidfactor/google-cloud-sdk/completion.zsh.inc'; fi

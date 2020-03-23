@@ -12,7 +12,6 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'
   Plug 'pangloss/vim-javascript'
   Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
-  Plug 'ds26gte/neoscmindent'
 call plug#end()
 
 
@@ -105,18 +104,6 @@ let g:ale_set_balloons=1
 "let g:ale_echo_msg_warning_str='Warning'
 "let g:ale_echo_msg_format='%severity%: %s'
 
-" Ocaml
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-
-let g:ale_linters = {
-\   'ocaml':      ['merlin'],
-\}
-
-let g:ale_fixers = {
-\   'ocaml':      ['ocamlformat'],
-\   '*':          ['remove_trailing_lines', 'trim_whitespace'],
-\}
 
 " Elm settings
 let g:elm_format_autosave=1
