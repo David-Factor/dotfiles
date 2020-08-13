@@ -54,6 +54,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 # Install julia
 brew cask install julia
 
-
+# Install go
+brew install go
 
 echo "DONE"
