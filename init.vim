@@ -6,12 +6,16 @@ call plug#begin()
   Plug 'rust-lang/rust.vim'
   Plug 'Zaptic/elm-vim'
   Plug 'ultrox/elm-ale-pretty'
-  Plug 'leafgarland/typescript-vim'
   Plug 'airblade/vim-gitgutter'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'pangloss/vim-javascript'
-  Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
+  Plug 'leafgarland/typescript-vim' " TypeScript syntax
+  Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+  Plug 'prettier/vim-prettier'
+  Plug 'fatih/vim-go' , { 'do': ':GoUpdateBinaries' }
+  Plug 'JuliaEditorSupport/julia-vim'
+  Plug 'mattn/emmet-vim'
 call plug#end()
 
 
@@ -26,7 +30,6 @@ set mouse=a
 set background=dark
 let g:gruvbox_contrast_dark='soft'
 colorscheme gruvbox
-
 " UI
 set cmdheight=1     " command line height
 set ruler           " show the cursor position all the time
@@ -79,8 +82,11 @@ set shiftwidth=4
 augroup configGroup
     autocmd!
     autocmd BufRead,BufNewFile *.md,*.markdown setlocal wrap
-    autocmd BufRead,BufNewFile *.ts setlocal filetype=typescript noexpandtab shiftwidth=2 tabstop=2
+    " autocmd BufRead,BufNewFile *.ts setlocal filetype=typescript noexpandtab shiftwidth=2 tabstop=2
+    autocmd BufRead,BufNewFile *.ts,*.tsx setlocal filetype=typescript shiftwidth=2 tabstop=2 softtabstop=2
     autocmd BufRead,BufNewFile *.js setlocal filetype=javascript shiftwidth=2 tabstop=2 softtabstop=2
+    autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+
     autocmd BufRead,BufNewFile *.css setlocal shiftwidth=2  tabstop=2 softtabstop=2
     autocmd FileType qf setlocal linebreak brk=<
 augroup END
@@ -89,6 +95,10 @@ augroup fileCleaning
     autocmd!
     autocmd BufWritePre * %s/\s\+$//e "remove trailing spaces on save
 augroup END
+
+
+" Prettier
+let g:prettier#autoformat_require_pragma = 0
 
 "" Ale
 let g:ale_linters={ 'elm': ['elm_ls'] }
@@ -103,6 +113,7 @@ let g:ale_set_balloons=1
 "let g:ale_echo_msg_error_str='Error'
 "let g:ale_echo_msg_warning_str='Warning'
 "let g:ale_echo_msg_format='%severity%: %s'
+
 
 
 " Elm settings
@@ -126,7 +137,6 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
 let g:go_fmt_command="goimports"
-
 
 " Mappings
 let mapleader="-"
