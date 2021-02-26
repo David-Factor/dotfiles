@@ -1,4 +1,5 @@
 call plug#begin()
+  Plug 'reasonml-editor/vim-reason-plus'
   Plug 'neovimhaskell/haskell-vim'
   Plug 'bitc/vim-hdevtools'
   Plug 'morhetz/gruvbox'
@@ -14,7 +15,6 @@ call plug#begin()
   Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
   Plug 'prettier/vim-prettier'
   Plug 'fatih/vim-go' , { 'do': ':GoUpdateBinaries' }
-  Plug 'JuliaEditorSupport/julia-vim'
   Plug 'mattn/emmet-vim'
 call plug#end()
 
@@ -101,18 +101,18 @@ augroup END
 let g:prettier#autoformat_require_pragma = 0
 
 "" Ale
-let g:ale_linters={ 'elm': ['elm_ls'] }
+let g:ale_linters={
+            \'elm': ['elm_ls'],
+            \'rust': ['rls'],
+            \}
+
+
+
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 let g:ale_sign_info='•'
 let g:ale_lint_on_save=1
-"let g:ale_open_list='on_save'
-"let g:ale_list_window_size=5
 let g:ale_set_balloons=1
-"let g:ale_cursor_detail=1
-"let g:ale_echo_msg_error_str='Error'
-"let g:ale_echo_msg_warning_str='Warning'
-"let g:ale_echo_msg_format='%severity%: %s'
 
 
 
@@ -155,8 +155,6 @@ nmap <silent> gr <Plug>(ale_find_references)
 au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
 au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
 au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
-
-
 
 
 " Netrw
