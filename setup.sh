@@ -10,7 +10,7 @@ cp "$HOME/.zshrc" "$HOME/.zshrc.orig"
 rm "$HOME/.zshrc"
 
 # Install Oh My Zsh
-git clone "https://github.com/robbyrussell/oh-my-zsh.git" "$HOME/.oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Symlink .zshrc
 ln -s "$PWD/.zshrc" "$HOME"
@@ -19,7 +19,11 @@ ln -s "$PWD/.zshrc" "$HOME"
 chsh -s /bin/zsh
 
 # Install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Add bre to path
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile eval "$(/opt/homebrew/bin/brew shellenv)"
+
 
 # Install node
 brew install node
@@ -27,7 +31,9 @@ brew install node
 # Install elm related npm packages
 npm install -g elm @elm-tooling/elm-language-server elm-test elm-format elm-analyse
 
+# Install utils
 brew install ripgrep
+brew install tree
 
 ### NEOVIM
 
@@ -39,6 +45,9 @@ NEOVIM_CONFIG_PATH="$HOME/.config/nvim/"
 mkdir -p "$NEOVIM_CONFIG_PATH"
 mv "$NEOVIM_CONFIG_PATH/init.vim" "$NEOVIM_CONFIG_PATH/init.vim.orig"
 ln -s "$PWD/init.vim" "$NEOVIM_CONFIG_PATH"
+
+# Symlink coc settings
+ln -s "$PWD/coc-settings.json" "$NEOVIM_CONFIG_PATH"
 
 # Install vim-plug for neovim
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
