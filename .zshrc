@@ -111,3 +111,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 eval "$(rbenv init -)"
 source $HOME/.zshenv
+[ -f "/Users/davidfactor/.ghcup/env" ] && source "/Users/davidfactor/.ghcup/env" # ghcup-env

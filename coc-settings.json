@@ -17,6 +17,15 @@
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
   "languageserver": {
+    "golang": {
+      "command": "$GOBIN/gopls",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
+      }
+    },
     "elmLS": {
       "command": "elm-language-server",
       "filetypes": ["elm"],
